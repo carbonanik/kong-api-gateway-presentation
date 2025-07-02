@@ -65,7 +65,3 @@ This project demonstrates a modular backend system using Node.js microservices, 
 
 ## Socket.io Endpoint (Chat)
 - `ws://localhost:8000` -Listen to message event
-
-## Notes
-- For demo/testing, see `API_DOCUMENTATION.md` and `DEMO_SCRIPT.md`.
-- For architecture/security details, see `ARCHITECTURE.md` and `SECURITY.md`. 
