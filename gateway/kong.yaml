@@ -1,0 +1,86 @@
+_format_version: "3.0"
+services:
+  - name: cache-service
+    url: http://cache-service:3000
+    routes:
+      - name: cache-route
+        paths:
+          - /cache
+        plugins:
+          - name: jwt
+            config:
+              key_claim_name: iss
+              secret_is_base64: false
+  - name: customer-service
+    url: http://customer-service:3000
+    routes:
+      - name: customer-protected
+        paths:
+          - /customer
+        # strip_path: false
+        # plugins:
+        #   - name: jwt
+        #     config:
+        #       key_claim_name: iss
+        #       secret_is_base64: false
+  - name: order-service
+    url: http://order-service:3000
+    routes:
+      - name: order-route
+        paths:
+          - /order
+        plugins:
+          - name: jwt
+            config:
+              key_claim_name: iss
+              secret_is_base64: false
+  - name: payment-service
+    url: http://payment-service:3000
+    routes:
+      - name: payment-route
+        paths:
+          - /payment
+        plugins:
+          - name: jwt
+            config:
+              key_claim_name: iss
+              secret_is_base64: false
+  - name: chat-service
+    url: http://chat-service:3000
+    routes:
+      - name: chat-route
+        paths:
+          - /socket.io/
+        strip_path: false
+        plugins:
+          - name: jwt
+            config:
+              key_claim_name: iss
+              secret_is_base64: false
+  - name: file-service
+    url: http://file-service:3000
+    routes:
+      - name: file-route
+        paths:
+          - /file
+        plugins:
+          - name: jwt
+            config:
+              key_claim_name: iss
+              secret_is_base64: false
+consumers:
+  - username: testuser
+    jwt_secrets:
+      - key: "test-key"
+        secret: "test-secret"
+        algorithm: HS256
+
+plugins:
+  - name: rate-limiting
+    config:
+      minute: 100
+      policy: local
+  # - name: jwt
+  #   config:
+  #     key_claim_name: iss
+  #     secret_is_base64: false 
