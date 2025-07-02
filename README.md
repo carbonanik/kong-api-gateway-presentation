@@ -39,8 +39,8 @@ This project demonstrates a modular backend system using Node.js microservices, 
 ## Setup & Running
 1. **Clone the repo:**
    ```bash
-   git clone <your_repo>
-   cd presentation
+   git clone https://github.com/carbonanik/kong-api-gateway-presentation.git
+   cd kong-api-gateway-presentation
    ```
 2. **Start all services:**
    ```bash
